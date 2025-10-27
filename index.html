@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Trading Platform - Java Project</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .feature {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .feature h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .code-sample {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 10px 10px 10px 0;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: #5a67d8;
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .tech-tag {
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Stock Trading Platform</h1>
+            <p>Java-based Trading Simulation System with OOP & File I/O</p>
+            <p><strong>CodeAlpha Internship Project</strong></p>
+        </div>
+
+        <div class="card">
+            <h2>📊 Project Overview</h2>
+            <p>A comprehensive Java console application that simulates a stock trading environment with real-time market data, portfolio management, and persistent data storage. Built using Object-Oriented Programming principles and Java serialization for data persistence.</p>
+            
+            <div class="tech-stack">
+                <span class="tech-tag">Java</span>
+                <span class="tech-tag">OOP</span>
+                <span class="tech-tag">File I/O</span>
+                <span class="tech-tag">Serialization</span>
+                <span class="tech-tag">HashMap</span>
+                <span class="tech-tag">VS Code</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>✨ Key Features</h2>
+            <div class="features">
+                <div class="feature">
+                    <h3>📈 Real-time Market Data</h3>
+                    <p>Dynamic stock prices with automatic updates every 5 seconds, simulating real market fluctuations with percentage changes.</p>
+                </div>
+                <div class="feature">
+                    <h3>💰 Buy/Sell Operations</h3>
+                    <p>Complete trading functionality with balance verification, portfolio updates, and transaction recording.</p>
+                </div>
+                <div class="feature">
+                    <h3>📋 Portfolio Management</h3>
+                    <p>Track stock holdings, calculate total portfolio value, and view performance metrics in real-time.</p>
+                </div>
+                <div class="feature">
+                    <h3>💾 Data Persistence</h3>
+                    <p>Save and load portfolio data using Java serialization, ensuring data survives application restarts.</p>
+                </div>
+                <div class="feature">
+                    <h3>🔐 User Management</h3>
+                    <p>User registration, authentication, and individual portfolio tracking with transaction history.</p>
+                </div>
+                <div class="feature">
+                    <h3>📊 Transaction History</h3>
+                    <p>Complete record of all buy/sell operations with timestamps and detailed transaction information.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🏗️ Architecture & Design</h2>
+            <p>The application follows solid OOP principles with well-structured classes:</p>
+            <ul style="margin: 20px 0; padding-left: 20px;">
+                <li><strong>Stock:</strong> Represents individual stocks with price data and updates</li>
+                <li><strong>Portfolio:</strong> HashMap-based holdings management (Serializable)</li>
+                <li><strong>User:</strong> User information and authentication</li>
+                <li><strong>Transaction:</strong> Records all trading operations</li>
+                <li><strong>MarketData:</strong> Manages stock market simulation</li>
+                <li><strong>TradingPlatform:</strong> Main application controller</li>
+                <li><strong>PortfolioIO:</strong> File I/O operations for data persistence</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>💻 Sample Code</h2>
+            <p>Here's a glimpse of the Portfolio class implementation:</p>
+            <div class="code-sample">
+public class Portfolio implements Serializable {
+    private static final long serialVersionUID = 1L;
+    private Map&lt;String, Integer&gt; holdings; // Stock symbol → quantity
+    private double totalValue;
+    
+    public void addStock(String symbol, int quantity) {
+        holdings.put(symbol, holdings.getOrDefault(symbol, 0) + quantity);
+    }
+    
+    public void updateTotalValue(Map&lt;String, Stock&gt; availableStocks) {
+        totalValue = 0.0;
+        for (Map.Entry&lt;String, Integer&gt; holding : holdings.entrySet()) {
+            String symbol = holding.getKey();
+            int quantity = holding.getValue();
+            if (availableStocks.containsKey(symbol)) {
+                double currentPrice = availableStocks.get(symbol).getCurrentPrice();
+                totalValue += currentPrice * quantity;
+            }
+        }
+    }
+}
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🚀 How to Run</h2>
+            <ol style="margin: 20px 0; padding-left: 20px;">
+                <li>Clone this repository to your local machine</li>
+                <li>Navigate to the project directory</li>
+                <li>Compile all Java files: <code>javac *.java</code></li>
+                <li>Run the application: <code>java TradingPlatform</code></li>
+                <li>Follow the console prompts to register, trade stocks, and manage your portfolio</li>
+            </ol>
+        </div>
+
+        <div class="card">
+            <h2>📁 Source Code & Links</h2>
+            <a href="#" class="btn">📂 View Source Code</a>
+            <a href="#" class="btn">💼 My Portfolio</a>
+            <a href="#" class="btn">📧 Contact Me</a>
+            <p style="margin-top: 20px;">
+                <strong>Built for CodeAlpha Internship Program</strong><br>
+                Developed by: <strong>Manish Kumar</strong><br>
+                Technology Stack: Java, OOP, File I/O, VS Code
+            </p>
+        </div>
+    </div>
+</body>
+</html>
